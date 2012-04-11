@@ -1,0 +1,28 @@
+---
+abstract: 'Perl extension for generating IODEF protocol buffer objects'
+author:
+  - 'Wes Young, <wes@barely3am.com>'
+build_requires:
+  ExtUtils::MakeMaker: 6.42
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
+distribution_type: module
+generated_by: 'Module::Install version 1.00'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Iodef-Pb
+no_index:
+  directory:
+    - examples
+    - inc
+    - t
+requires:
+  Class::Accessor: 0.34
+  Google::ProtocolBuffers: 0.08
+  Module::Install: 1.00
+  perl: 5.8.8
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.00_01

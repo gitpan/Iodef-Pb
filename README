@@ -1,0 +1,44 @@
+Iodef-Pb
+========
+
+This library maps IODEF (RFC 5070) to the google protocol buffer serialization library. The lib/Iodef/_Pb.pm file is generated using Google::ProtocolBuffers library based on iodef.proto (github.com/collectiveintel/IODEF). This lib should only be used for low level API access. High level API access can be leveraged via the Iodef::Pb::Simple API. 
+
+Once the buffer's are encoded, they can easily be transported via REST, ZeroMQ, Crossroads.io or any other messaging framework (or the google protocol RPC bits themselves). To store these in a database, you can easily base64 the data-structure and save as text.
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDENCIES
+
+This module requires these other modules and libraries:
+   
+   Google::ProtocolBuffers
+   Class::Accessor
+
+SEE ALSO
+
+   http://github.com/collectiveintel/iodef-pb-perl
+   http://github.com/collectiveintel/iodef-pb-simple-perl
+   https://github.com/collectiveintel/IODEF
+   http://tools.ietf.org/html/rfc5070#section-3.2
+   http://search.cpan.org/~gariev/Google-ProtocolBuffers/lib/Google/ProtocolBuffers.pm
+   http://code.google.com/p/protobuf/
+   http://search.cpan.org/~kasei/Class-Accessor/lib/Class/Accessor.pm
+   http://collectiveintel.net
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2012 by Wes Young <claimid.com/wesyoung>
+Copyright (C) 2012 by the REN-ISAC <ren-isac.net>
+Copyright (C) 2012 by the Trustee's of Indiana University <iu.edu>
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.10.1 or,
+at your option, any later version of Perl 5 you may have available.
+
+
