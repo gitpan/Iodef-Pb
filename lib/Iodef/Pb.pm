@@ -6,10 +6,34 @@ use 5.008008;
 use strict;
 use warnings;
 
-our $VERSION = '0.00_01';
+our $VERSION = '0.01';
 $VERSION = eval $VERSION;  # see L<perlmodstyle>
 
 # most methods generated in Iodef::_Pb
+
+sub iodef_addresses {
+    my $class = shift;
+    my $iodef = shift;
+    
+    my @array;
+    foreach my $i (@{$iodef->get_Incident()}){
+        foreach my $e (@{$i->get_EventData()}){
+            my @flows = (ref($e->get_Flow()) eq 'ARRAY') ? @{$e->get_Flow()} : $e->get_Flow();
+            foreach my $f (@flows){
+                my @systems = (ref($f->get_System()) eq 'ARRAY') ? @{$f->get_System()} : $f->get_System();
+                foreach my $s (@systems){
+                    my @nodes = (ref($s->get_Node()) eq 'ARRAY') ? @{$s->get_Node()} : $s->get_Node();
+                    foreach my $n (@nodes){
+                        my $addresses = $n->get_Address();
+                        $addresses = [$addresses] if(ref($addresses) eq 'AddressType');
+                        push(@array,@$addresses);
+                    }
+                }
+            }
+        }
+    }
+    return(\@array);
+}
 
 1;
 __END__
