@@ -1,9 +1,9 @@
 Revision history for Perl extension Iodef::Pb.
 
-0.01_02 2012-07-31
+0.02    2012-07-31
     - added basic iodef_ functions
 
-0.00_01  Thu Mar 22 12:57:28 2012
+0.00_01 Thu Mar 22 12:57:28 2012
 	- original version; created by h2xs 1.23 with options
 		-ABXb 5.8.8 Iodef::Pb
 
