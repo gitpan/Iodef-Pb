@@ -1,5 +1,8 @@
 Revision history for Perl extension Iodef::Pb.
 
+0.03    2012-08-10
+    - added iodef_restriction_normalize function
+
 0.02    2012-07-31
     - added basic iodef_ functions
 

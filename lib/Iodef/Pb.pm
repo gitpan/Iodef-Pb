@@ -6,7 +6,7 @@ use 5.008008;
 use strict;
 use warnings;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 $VERSION = eval $VERSION;  # see L<perlmodstyle>
 
 require Exporter;
@@ -23,12 +23,39 @@ our @ISA = qw(Exporter);
 our %EXPORT_TAGS = ( 'all' => [ qw(
     iodef_descriptions iodef_assessments iodef_confidence iodef_impacts iodef_impacts_first
     iodef_additional_data iodef_systems iodef_addresses iodef_events_additional_data iodef_services
-    iodef_systems_additional_data
+    iodef_systems_additional_data iodef_normalize_restriction
 ) ] );
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 our @EXPORT = qw//;
 
 # most methods generated in Iodef::_Pb
+
+sub iodef_normalize_restriction {
+    my $self            = shift;
+    my $restriction     = shift;
+    
+    return unless($restriction);
+    return $restriction if($restriction =~ /^[1-4]$/);
+    for(lc($restriction)){
+        if(/^private$/){
+            $restriction = RestrictionType::restriction_type_private(),
+            last;
+        }
+        if(/^public$/){
+            $restriction = RestrictionType::restriction_type_public(),
+            last;
+        }
+        if(/^need-to-know$/){
+            $restriction = RestrictionType::restriction_type_need_to_know(),
+            last;
+        }
+        if(/^default$/){
+            $restriction = RestrictionType::restriction_type_default(),
+            last;
+        }   
+    }
+    return $restriction;
+}
 
 sub iodef_descriptions {
     my $iodef = shift;
